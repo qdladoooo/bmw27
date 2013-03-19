@@ -1,0 +1,5 @@
+<?php
+
+
+assign('name', 'Dlad');
+
