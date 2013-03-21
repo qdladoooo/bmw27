@@ -1,9 +1,9 @@
 <?php
 class User extends db
 {
-	function get_user_info() {
-		
-		return 'I am userinfo.';
+	function user_info() {
+		$sql = 'show databases;';
+		return $this->Eq($sql);
 	}
 	
 }
