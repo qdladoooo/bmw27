@@ -1,19 +1,18 @@
 <?php
-//域
+define('__IS_DEVELOPING', 'true');
+
 define('__DOMAIN', 'bmw.cn');
 
-//mysql连接字符
-define('__DATABASE_CONNECT_STRING','mysql:host=localhost;');
+//mysql connect params
+define('__DATABASE_CONNECT_STRING', 'mysql:host=127.0.0.1;');
+define('__DATABASE_CONNECT_NAME', 'root');
+define('__DATABASE_CONNECT_PW', '5533');
 
-//图片服务器网址
 define('__WEB_URL','http://bmw.cn');
-
-//js,img,css开发目录
 define('__JS_PATH', __WEB_URL . '/statics/j/');
 define('__CSS_PATH', __WEB_URL . '/statics/c/');
 define('__IMG_PATH', __WEB_URL . '/statics/i/');
 
 //des key
 define('__DES_KEY_STRING',"fg!@ym$%");
-
 

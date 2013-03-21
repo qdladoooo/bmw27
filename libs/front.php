@@ -8,6 +8,9 @@ class Front {
 	static private $title_postfix = 'BMW';
 	static $default_title = '';
 	
+	static private $css_queue = array();
+	static private $js_queue = array();
+	
 	//layout
 	static function set_layout($template_name) {
 		self::$default_layout = $template_name;
@@ -35,9 +38,33 @@ class Front {
 	}
 	
 	//js
+	static function append_js($js_path) {
+		array_push(self::$js_queue, __JS_PATH . $js_path);
+	}
 	
+	static function prepend_js($js_path) {
+		array_unshift(self::$js_queue, __JS_PATH . $js_path);
+	}
+	
+	static function call_js($remote_path) {
+		array_push(self::$js_queue, $remote_path);
+	}
+	
+	static function get_js_queue() {
+		return self::$js_queue;
+	}
 	
 	//css
+	static function append_css($css_path) {
+		array_push(self::$css_queue, __CSS_PATH . $css_path);
+	}
 	
+	static function call_css($remote_path) {
+		array_push(self::$css_queue, $remote_path);
+	}
+	
+	static function get_css_queue() {
+		return self::$css_queue;
+	}
 	
 }

@@ -2,17 +2,22 @@
 <html lang="zh-CN">
     <head>
 		<meta charset="utf-8">
-		<title>{$title}</title>
+		<title>{$frontTitle}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Le styles -->
 		<link href="{$smarty.const.__CSS_PATH}bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
-		<link href="{$smarty.const.__CSS_PATH}global.css" media="screen" rel="stylesheet" type="text/css">
 		<link href="{$smarty.const.__CSS_PATH}bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css">
+		<link href="{$smarty.const.__CSS_PATH}global.css" media="screen" rel="stylesheet" type="text/css">
 		<link href="{$smarty.const.__IMG_PATH}favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+		{if $frontCssQueue}
+			{foreach item=cssFile from=$frontCssQueue}
+				<link href="{$cssFile}" media="screen" rel="stylesheet" type="text/css">
+			{/foreach}
+		{/if}
 		<!-- Scripts -->
 		<script type="text/javascript" src="{$smarty.const.__JS_PATH}jquery.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.__JS_PATH}bootstrap.min.js"></script>
-		<!--[if lt IE 9]><script type="text/javascript" src="/js/html5.js"></script><![endif]-->                                      
+		<!--[if lt IE 9]><script type="text/javascript" src="/js/html5.js"></script><![endif]-->
 	</head>
 <body>
 <div id="stage">
@@ -65,10 +70,14 @@
 		<div class="span4">...</div>
 	  	<div class="span8">...</div>
 	</div>
-	{$content}
+	{$frontContent}
 	<div id="footer">
 	</div>
 </div>
-
+{if $frontJsQueue}
+	{foreach item=jsFile from=$frontJsQueue}
+		<script type="text/javascript" src="{$jsFile}"></script>
+	{/foreach}
+{/if}
 </body>
 </html>
