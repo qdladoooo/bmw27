@@ -2,11 +2,10 @@
 //init path to document_root
 chdir(dirname(__DIR__));
 
-//for dump
-ini_set("display_errors","On");
-error_reporting(E_WARNING);
+//tell php to shut up
+date_default_timezone_set('Asia/Shanghai');
 
-//all you need is here!
+//all you need is initialize here!
 require_once 'config/pagebase.php';
 
 //poor page route
@@ -19,6 +18,9 @@ if(!empty($ar[1]) && !empty($ar[2]) && file_exists("components/{$ar[1]}/{$ar[2]}
 	include_once 'components/error/404.php';
 	$content = fetch("error/404.html");
 }
+
+//common pattern
+assign('title', Front::get_title());
 assign('content', $content);
-display('layout/layout.html');
+display( Front::get_layout() );
 
