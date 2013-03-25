@@ -11,7 +11,10 @@ require_once 'config/pagebase.php';
 //poor page route
 preg_match('/^[a-zA-Z\/]+/', $_SERVER['REQUEST_URI'], $matches);
 $ar = explode('/', $matches[0]);
-if(!empty($ar[1]) && !empty($ar[2]) && file_exists("components/{$ar[1]}/{$ar[2]}.php")) {
+
+$ar[1] = empty($ar[1]) ? 'index' : $ar[1];
+$ar[2] = empty($ar[2]) ? 'index' : $ar[2];
+if(file_exists("components/{$ar[1]}/{$ar[2]}.php")) {
 	include_once "components/{$ar[1]}/{$ar[2]}.php";
 	$content = fetch("{$ar[1]}/{$ar[2]}.html");
 } else {
