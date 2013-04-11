@@ -14,7 +14,7 @@ $ar = explode('/', $matches[0]);
 
 $ar[1] = empty($ar[1]) ? 'index' : $ar[1];
 $ar[2] = empty($ar[2]) ? 'index' : $ar[2];
-if(file_exists("components/{$ar[1]}/{$ar[2]}.php")) {
+if(file_exists("components/{$ar[1]}/{$ar[2]}.php") && file_exists("templates/{$ar[1]}/{$ar[2]}.html")) {
 	include_once "components/{$ar[1]}/{$ar[2]}.php";
 	$content = fetch("{$ar[1]}/{$ar[2]}.html");
 } else {

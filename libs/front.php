@@ -11,20 +11,28 @@ class Front {
 	static private $css_queue = array();
 	static private $js_queue = array();
 	
-	//layout
+	/*
+	 * 	layout
+	 * 
+	 */
 	static function set_layout($template_name) {
 		self::$default_layout = $template_name;
 	}
 	
+	//disable layout
 	static function no_layout() {
 		self::$default_layout = 'no_layout.html';
 	}
 
+	//get current
 	static function get_layout() {
 		return self::$layout_path_base . self::$default_layout;
 	}
 	
-	//title
+	/*
+	 * title
+	 * 
+	 * */
 	static function set_title($title, $need_postfix = true) {
 		if(!empty($title) && $need_postfix) {
 			self::$default_title = $title . ' - ' . self::$title_postfix;
@@ -37,7 +45,10 @@ class Front {
 		return self::$default_title;
 	}
 	
-	//js
+	/*
+	 * js
+	 * 
+	 * */
 	static function append_js($js_path) {
 		array_push(self::$js_queue, __JS_PATH . $js_path);
 	}
@@ -54,7 +65,10 @@ class Front {
 		return self::$js_queue;
 	}
 	
-	//css
+	/*
+	 * css
+	 * 
+	 * */
 	static function append_css($css_path) {
 		array_push(self::$css_queue, __CSS_PATH . $css_path);
 	}

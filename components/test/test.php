@@ -5,5 +5,5 @@ assign('name', 'Dlad');
 
 $user = M('User');
 $info = $user->user_info();
-var_dump($info);
 
+var_dump($_GET);

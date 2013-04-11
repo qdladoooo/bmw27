@@ -18,7 +18,6 @@ class db {
 	//excute query
 	function Eq($sql) {
 		$res = self::$pdo->query ( $sql );
-		// 如果存在，打印错误信息
 		$this->IsError ();
 		$res->setFetchMode ( PDO::FETCH_ASSOC );
 		return $res->fetchAll ();
@@ -27,7 +26,6 @@ class db {
 	//excute one row
 	function Eor($sql) {
 		$res = self::$pdo->query ( $sql );
-		// 如果存在，打印错误信息
 		$this->IsError ();
 		$res->setFetchMode ( PDO::FETCH_ASSOC );
 		$data = $res->fetch ();
@@ -37,7 +35,6 @@ class db {
 	//excute col
 	function Ec($sql) {
 		$res = self::$pdo->query ( $sql );
-		// 如果存在，打印错误信息
 		$this->IsError ();
 		$res->setFetchMode ( PDO::FETCH_ASSOC );
 		$data = $res->fetchAll ( PDO::FETCH_COLUMN, 0 );
@@ -47,7 +44,6 @@ class db {
 	//excute scalar
 	function Es($sql) {
 		$res = self::$pdo->query ( $sql );
-		// 如果存在，打印错误信息
 		$this->IsError ();
 		$res->setFetchMode ( PDO::FETCH_NUM );
 		$data = $res->fetch ( PDO::FETCH_COLUMN );
@@ -57,7 +53,6 @@ class db {
 	//excute none query
 	function Enq($sql) {
 		$res = self::$pdo->exec ( $sql );
-		// 如果存在，打印错误信息
 		$this->IsError ();
 		
 		return $res;
