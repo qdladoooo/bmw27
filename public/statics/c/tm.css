@@ -1,0 +1,240 @@
+@CHARSET "UTF-8";
+html, body {
+	width:100%;
+    height:100%;
+	overflow:hidden;
+}
+
+header {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 1px solid #777;
+	background-color: black;
+	color: white;
+}
+
+#stage {
+	width: 100%;
+	height: 95%;
+	overflow: hidden;
+}
+
+.left_frame {
+	width: 75%;
+	height: 100%;
+	float: left;
+}
+
+.left_frame .tm_nav_box {
+	height: 90px;
+}
+
+.left_frame .tm_nav_box .tm_nav {
+	height: 38px;
+	padding-top: 5px;
+	background-color: #f5f5f5;
+	
+}
+
+.left_frame .tm_nav_box .tm_sub_nav {
+	padding-left: 15px;
+	padding-top: 10px;
+}
+
+.city_selector {
+	width: 150px;
+	margin: 5px;
+	text-align: center;
+}
+
+.city_selector .cname {
+	font-size: 18px;
+	color: #666;
+	float: left;
+	position: relative;
+	z-index: 99;
+	padding-left: 15px;
+}
+
+.city_selector .cop {
+	font-size: 12px;
+	color:#2c80c0;
+}
+
+.left_frame .tm_nav_box .tm_sub_nav {
+	height: 40px;
+}
+
+.right_frame {
+	width: 25%;
+	height: 100%;
+	float: right;
+	box-shadow: 0 0 16px rgba(0,0,0,0.4);
+	position: relative;
+}
+
+.right_frame div {
+	width: 100%;
+	height: auto;
+	border-bottom: 1px solid #666;
+}
+
+.right_frame div.jh_content_box, .right_frame div.jh_content  {
+	border-bottom: none;
+}
+
+.right_frame .header{
+	height: 42px;
+	text-align: center;
+	line-height: 42px;
+}
+
+.right_frame .date_picker{
+	height: 47px;
+	text-align: center;
+}
+
+.right_frame .date_picker .picker{
+	width: 160px;
+	margin: 0 auto;
+}
+
+.right_frame .date_picker .cur_date {
+	font-size: 18px;
+	color: #666;
+	position: relative;
+	z-index: 99;
+	top: 5px;
+}
+
+.right_frame .traffic{
+	height: 30px;
+	text-align: center;
+}
+
+.right_frame .traffic{
+	height: 40px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.right_frame .traffic .tr_destination {
+	width: 70px;
+}
+
+.right_frame .traffic .tr_vehicle {
+	width: 60px;
+}
+
+.right_frame .traffic .tr_time {
+	width: 50px;
+}
+
+.right_frame .list_box{
+	height: 40px;
+	overflow-x: hidden;
+}
+
+.right_frame .list_box .list_content {
+	height: auto;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.right_frame .list_box .list_content .item {
+	height: 90px;
+	width: auto;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+	padding: 5px 10px;
+	
+}
+
+.right_frame .list_box .list_content .item img{
+	width: 120px;
+	height: auto;
+}
+
+.right_frame .list_box .list_content .item dl{
+	margin: 0 5px;
+	float: left;
+}
+
+.right_frame .hotel{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #777;
+}
+
+.right_frame .hotel span{
+	color: black;
+}
+
+.right_frame .op{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+#map_container, #list_container, #icon_container {
+	height: 85%;
+	width: 100%;
+}
+
+#list_container .shop_list li {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+/* shop marker start */
+.sm_box {
+	background-color: #f3802b;
+	color: white;
+	font-size: 12px;
+	text-align: center;
+	width: 125px;
+	overflow: hidden;
+}
+
+.sm_pic {
+	width: 120px;
+	height: auto;
+	margin: 0 auto;
+	display: block;
+	border: 1px solid #fff;
+}
+
+.shop_info {
+	list-style: none;
+	overflow: hidden;
+	height: 95px;
+	width: 150px;
+	font-size: 12px;
+	margin: 0;
+	float: left;
+}
+
+.op_add_to_project {
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+/* shop marker end */
+
+
+
+/* common  */
+.fl {float:left;}
+
+.fr {float: right;}
+.mr15 {margin-right: 15px;}
+.mb5 {margin-bottom: 5px;}
+.mt5 {margin-top: 5px;}
+.ml5 {margin-left: 5px;}
+.hide {display: none;}
+
+

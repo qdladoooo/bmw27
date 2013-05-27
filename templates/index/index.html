@@ -1,11 +1,524 @@
-<canvas id="myCanvas"></canvas>
+<style type="text/css">
+#map_container img {
+        max-width: none;
+}
+</style>
 
+<header>logo slogan</header>
+<div id="stage">
+	<div class="left_frame">
+		<div class="tm_nav_box">
+			<div class="tm_nav">
+				<div class="city_selector fl">
+					<span class="cname jh_cname">广州</span>
+					<ul class="nav mb5">
+	                  <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">[更换城市]</a>
+	                    <ul class="dropdown-menu">
+	                      <li><a class="jh_change_city" href="#">广州</a></li>
+	                      <li><a class="jh_change_city" href="#">上海</a></li>
+	                      <li><a class="jh_change_city" href="#">北京</a></li>
+	                      <li><a class="jh_change_city" href="#">厦门</a></li>
+	                    </ul>
+	                  </li>
+	                </ul>
+				</div>
+				<ul class="nav nav-tabs">
+				  <li class="active jh_category" data-desc="景点"><a href="###" data-target="#tm_ss" data-toggle="tab">景点</a></li>
+				  <li class="jh_category" data-desc="酒店"><a href="###" data-target="#tm_hotel" data-toggle="tab">住宿</a></li>
+				  <li class="jh_category" data-desc="美食"><a href="###" data-target="#tm_ac" data-toggle="tab">吃喝玩乐</a></li>
+				</ul>
+			</div>
+			<div class="tab-content tm_sub_nav">
+				<div class="tab-pane active" id="tm_ss">
+					共有<span class="jh_shop_num">0</span>个景点 <span class="btn">景点筛选<i class="icon-chevron-down"></i></span>
+					<div class="btn-group mr15" data-toggle="buttons-radio">
+					  <button class="btn active"><i class="icon-picture"></i>图片</button>
+					  <button class="btn"><i class="icon-list"></i>列表</button>
+					  <button class="btn"><i class="icon-search"></i>地图</button>
+					</div>
+					<span>热门<i class="icon-resize-vertical"></i></span>
+					<span>人均<i class="icon-resize-vertical"></i></span>
+					<span class="fr mr15">
+						<input type="text" class="input-medium search-query">
+						<button type="submit" class="btn">搜索</button>
+					</span>
+				</div>
+				<div class="tab-pane" id="tm_hotel">
+					共有<span class="jh_shop_num">0</span>家酒店 <span class="btn">酒店筛选<i class="icon-chevron-down"></i></span>
+					<div class="btn-group mr15" data-toggle="buttons-radio">
+					  <button class="btn active"><i class="icon-picture"></i>图片</button>
+					  <button class="btn"><i class="icon-list"></i>列表</button>
+					  <button class="btn"><i class="icon-search"></i>地图</button>
+					</div>
+					<span>热门<i class="icon-resize-vertical"></i></span>
+					<span>人均<i class="icon-resize-vertical"></i></span>
+					<span class="fr mr15">
+						<input type="text" class="input-medium search-query">
+						<button type="submit" class="btn">搜索</button>
+					</span>
+				</div>
+				<div class="tab-pane" id="tm_ac">
+					共有<span class="jh_shop_num">0</span>个美食 <span class="btn">美食筛选<i class="icon-chevron-down"></i></span>
+					<div class="btn-group mr15" data-toggle="buttons-radio">
+					  <button class="btn active"><i class="icon-picture"></i>图片</button>
+					  <button class="btn"><i class="icon-list"></i>列表</button>
+					  <button class="btn"><i class="icon-search"></i>地图</button>
+					</div>
+					<span>热门<i class="icon-resize-vertical"></i></span>
+					<span>人均<i class="icon-resize-vertical"></i></span>
+					<span class="fr mr15">
+						<input type="text" class="input-medium search-query">
+						<button type="submit" class="btn">搜索</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div id="map_container"></div>
+		<div id="list_container" class="hide">
+			<ul class="shop_list"></ul>
+		</div>
+		<div id="icon_container" class="hide">
+			<ul class="shop_icon_list"></ul>
+		</div>
+	</div>
+	<div class="right_frame">
+		<div class="header">
+			<span>广州游</span><input type="text" class="hide" /><a href="###"><i class="icon-pencil"></i></a>
+			<span>2013-06-01</span><a href="###"><i class="icon-calendar"></i> </a>
+		</div>
+		<script type="text/javascript">
+			
+		</script>
+		
+		<div class="date_picker">
+			<span class="cur_date">第1天</span>
+			<ul class="nav mb5 picker">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">[选择日程]</a>
+					<ul class="dropdown-menu jh_day_list">
+						<li><a class="jh_day_item" data-nth="1" href="#">第1天</a></li>
+						<li class="divider"></li>
+						<li><a class="jh_add_day" href="#">加一天</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="jh_content_box">
+			<div class="jh_content hide" data-nth="0">
+				<div class="traffic">
+					<select class="tr_vehicle">
+						<option>飞机</option>
+						<option>火车</option>
+						<option>汽车</option>
+					</select>
+					于
+					<select class="tr_time">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7" selected="selected">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>:<select class="tr_time">
+						<option value="0">0</option>                                                                          <option value="1">1</option>                                                                          <option value="2">2</option>                                                                          <option value="3">3</option>                                                                          <option value="4">4</option>                                                                          <option value="5">5</option>                                                                          <option value="6">6</option>                                                                          <option value="7">7</option>                                                                          <option value="8">8</option>                                                                          <option value="9">9</option>                                                                          <option value="10">10</option>                                                                          <option value="11">11</option>                                                                          <option value="12">12</option>                                                                          <option value="13">13</option>                                                                          <option value="14">14</option>                                                                          <option value="15">15</option>                                                                          <option value="16">16</option>                                                                          <option value="17">17</option>                                                                          <option value="18">18</option>                                                                          <option value="19">19</option>                                                                          <option value="20">20</option>                                                                          <option value="21">21</option>                                                                          <option value="22">22</option>                                                                          <option value="23">23</option>                                                                          <option value="24">24</option>                                                                          <option value="25">25</option>                                                                          <option value="26">26</option>                                                                          <option value="27">27</option>                                                                          <option value="28">28</option>                                                                          <option value="29" selected="&quot;selected&quot;">29</option>                                                                          <option value="30">30</option>                                                                          <option value="31">31</option>                                                                          <option value="32">32</option>                                                                          <option value="33">33</option>                                                                          <option value="34">34</option>                                                                          <option value="35">35</option>                                                                          <option value="36">36</option>                                                                          <option value="37">37</option>                                                                          <option value="38">38</option>                                                                          <option value="39">39</option>                                                                          <option value="40">40</option>                                                                          <option value="41">41</option>                                                                          <option value="42">42</option>                                                                          <option value="43">43</option>                                                                          <option value="44">44</option>                                                                          <option value="45">45</option>                                                                          <option value="46">46</option>                                                                          <option value="47">47</option>                                                                          <option value="48">48</option>                                                                          <option value="49">49</option>                                                                          <option value="50">50</option>                                                                          <option value="51">51</option>                                                                          <option value="52">52</option>                                                                          <option value="53">53</option>                                                                          <option value="54">54</option>                                                                          <option value="55">55</option>                                                                          <option value="56">56</option>                                                                          <option value="57">57</option>                                                                          <option value="58">58</option>                                                                          <option value="59">59</option>                                                                     
+					</select>
+					抵达
+					<input type="text" class="input-small tr_destination" placeholder="目的地">
+				</div>
+				<div class="list_box jh_rf_list">
+					<ul class="list_content">
+					</ul>
+				</div>
+				<div class="hotel jh_hotel_name">
+					尚未添加今日酒店
+				</div>
+			</div>
+			<div class="jh_content" data-nth="1">
+				<div class="traffic">
+					<select class="tr_vehicle">
+						<option>飞机</option>
+						<option>火车</option>
+						<option>汽车</option>
+					</select>
+					于
+					<select class="tr_time">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7" selected="selected">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>:<select class="tr_time">
+						<option value="0">0</option>                                                                          <option value="1">1</option>                                                                          <option value="2">2</option>                                                                          <option value="3">3</option>                                                                          <option value="4">4</option>                                                                          <option value="5">5</option>                                                                          <option value="6">6</option>                                                                          <option value="7">7</option>                                                                          <option value="8">8</option>                                                                          <option value="9">9</option>                                                                          <option value="10">10</option>                                                                          <option value="11">11</option>                                                                          <option value="12">12</option>                                                                          <option value="13">13</option>                                                                          <option value="14">14</option>                                                                          <option value="15">15</option>                                                                          <option value="16">16</option>                                                                          <option value="17">17</option>                                                                          <option value="18">18</option>                                                                          <option value="19">19</option>                                                                          <option value="20">20</option>                                                                          <option value="21">21</option>                                                                          <option value="22">22</option>                                                                          <option value="23">23</option>                                                                          <option value="24">24</option>                                                                          <option value="25">25</option>                                                                          <option value="26">26</option>                                                                          <option value="27">27</option>                                                                          <option value="28">28</option>                                                                          <option value="29" selected="&quot;selected&quot;">29</option>                                                                          <option value="30">30</option>                                                                          <option value="31">31</option>                                                                          <option value="32">32</option>                                                                          <option value="33">33</option>                                                                          <option value="34">34</option>                                                                          <option value="35">35</option>                                                                          <option value="36">36</option>                                                                          <option value="37">37</option>                                                                          <option value="38">38</option>                                                                          <option value="39">39</option>                                                                          <option value="40">40</option>                                                                          <option value="41">41</option>                                                                          <option value="42">42</option>                                                                          <option value="43">43</option>                                                                          <option value="44">44</option>                                                                          <option value="45">45</option>                                                                          <option value="46">46</option>                                                                          <option value="47">47</option>                                                                          <option value="48">48</option>                                                                          <option value="49">49</option>                                                                          <option value="50">50</option>                                                                          <option value="51">51</option>                                                                          <option value="52">52</option>                                                                          <option value="53">53</option>                                                                          <option value="54">54</option>                                                                          <option value="55">55</option>                                                                          <option value="56">56</option>                                                                          <option value="57">57</option>                                                                          <option value="58">58</option>                                                                          <option value="59">59</option>                                                                     
+					</select>
+					抵达
+					<input type="text" class="input-small tr_destination" placeholder="目的地">
+				</div>
+				<div class="list_box jh_rf_list">
+					<ul class="list_content">
+					</ul>
+				</div>
+				<div class="hotel jh_hotel_name">
+					尚未添加今日酒店
+				</div>
+			</div>
+		</div>
+		
+		<div class="op"><span class="label label-info">保存</span></div>
+	</div>
+</div>
 
+{literal}
 <script type="text/javascript">
+//全局变量注册
+var global = {};
 
-var canvas = document.getElementById('myCanvas');
-var ctx = canvas.getContext('2d');
-ctx.fillStyle = '#FF0000';
-ctx.fillRect(0,0,80,100);
+$().ready(function() {
+	//动态调整地图与形成列表高度，使总是充满屏幕
+	window.onresize = function() {
+		$('.jh_rf_list').css('height', document.body.clientHeight-230 + 'px');
+		$('#map_container').css('height', document.body.clientHeight-125 + 'px');
+	};
+	$('.jh_rf_list').css('height', document.body.clientHeight-230 + 'px');
+	$('#map_container').css('height', document.body.clientHeight-125 + 'px');
+	
+	//初始化地图
+	global.map = MyMap.init('广州', MyMap.currentCategory());
+	
+	//切换城市，重绘地图
+	$('.jh_change_city').on('click', function() {
+		var city = $(this).text();
+		$('.jh_cname').text( city );
+		global.map = MyMap.init( city, MyMap.currentCategory() );
+	});
+	
+	//切换分类，重绘地图
+	$('.jh_category').on('click', function() {
+		var category = $(this).attr('data-desc');
+		global.map = MyMap.init( MyMap.currentCity(), category );
+	});
+	
+	//日程加一天
+	$('.jh_add_day').on('click', function() {
+		//导航加一天
+		var n = $('.jh_day_list .divider').prev().find('a').attr('data-nth');
+		n++;
+		var item = $('<li><a class="jh_day_item" data-nth="' + n + '" href="#">第' + n + '天</a></li>');
+		$('.jh_day_list .divider').before(item);
+		
+		//内容加一天
+		$('.jh_content_box .jh_content[data-nth=0]').clone().attr('data-nth', n).addClass('hide').appendTo( $('.jh_content_box') );
+		
+		//切换到新添加的日程
+		item.find('a').click();
+	});
+	
+	//切换日程
+	$('.jh_day_item').live('click', function() {
+		//导航切换
+		var cur = $(this).attr('data-nth');
+		$('.cur_date').text( '第' + cur + '天' );
+		
+		//内容切换
+		$('.jh_content[data-nth=' + cur + ']').show().siblings().hide();
+	});
+});
+
+var MyMap = {
+	in_project : [],
+	init : function( city , category) {
+		//初始化地图
+		var map = new BMap.Map("map_container");                        // 创建Map实例
+		// 将地址解析结果显示在地图上，并调整地图视野
+		var myGeo = new BMap.Geocoder(); 
+		myGeo.getPoint(city, function(point) {
+			if (point) {
+			   map.centerAndZoom(point, 14);
+			   //获取周边的饭店信息
+			   Dianping.pull_shop(point.lat, point.lng, category);
+			}
+		}, city);
+		map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+		map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+		map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+		map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+		map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+		map.setCurrentCity( city );          // 设置地图显示的城市 此项是必须设置的
+		
+		//地图移动后重新获取周围商家
+		map.addEventListener("dragend", function showInfo(){
+			var cp = map.getCenter();
+			map.clearOverlays();
+			Dianping.pull_shop(cp.lat, cp.lng, category);
+		});
+		
+		return map;
+	},
+	
+	currentCategory : function() {
+		return $('.jh_category.active').attr('data-desc');
+	},
+	
+	currentCity : function() {
+		return $('.jh_cname').text();
+	},
+	
+	//将旅游要素加入行程计划
+	addToProject : function(self) {
+		var bid = $(self).prev().attr('data-bid');
+		var name = $(self).prev().text();
+		var href = $(self).prev().attr('href');
+		var pic_url = $(self).parents().next().find('img.sm_pic').attr('src');
+		
+		if(MyMap.currentCategory() == '酒店') {
+			//住宿
+			$('.jh_content_box .jh_content:visible').children('.jh_hotel_name').html('<span>下榻于</span><a target="_blank" href="' + href + '">' + name + '</a>');
+			//操作按钮显示为“已加入行程”
+			$(self).addClass('hide').siblings('.op_in_pro').removeClass('hide');
+		} else if(MyMap.currentCategory() == '景点' || MyMap.currentCategory() == '美食') {
+			//判断是否已加入行程
+			if( $.inArray(bid, MyMap.in_project) != -1 ) {
+				alert('已加入行程。');
+				exit();
+			} else {
+				//将景点加入当日行程列表
+				var item = $('<li data-bid="'+ bid +'" class="item"><img class="fl" src="' + pic_url + '" /><dl><dd><a target="_blank" href="' + href + '">' + name + '</a></dd><dd>时长：0.5小时</dd><dd><a data-rm-bid="' + bid + '" onclick="MyMap.removeFromProject(this);" class="label label-important">删除</a></dd></dl></li>');
+				$('.jh_content_box .jh_content:visible').find('.list_content').append(item);
+				
+				//将景点id放入“已加入行程的旅游元素列表”
+				MyMap.in_project.push(bid);
+				//操作按钮显示为“已加入行程”
+				$(self).addClass('hide').siblings('.op_in_pro').removeClass('hide');
+			}
+		}
+	},
+	
+	//从行程中删除旅游元素
+	removeFromProject : function(self) {
+		var bid = $(self).attr('data-rm-bid');
+		
+		//删除行程列表中的旅游元素
+		$('.jh_content_box .jh_content:visible').find('.list_content li[data-bid=' + bid + ']').remove();
+		
+		//维护“已加入行程旅游元素id”
+		MyMap.in_project.splice($.inArray(bid, MyMap.in_project),1); 
+	},
+	
+	//绘制店家信息
+	paint : function( shop ) {
+		//商家所在位置
+		var point = new BMap.Point(shop.lng, shop.lat);
+		//商家marker
+		var marker = new ShopOverlay(point, shop.pic_url, shop.name);    
+		global.map.addOverlay(marker);
+		
+		//信息窗口逻辑
+		var content = document.createElement("div");;
+		$(content).css({'width':'280px', 'height':'auto'});
+		$(content).html('<ul class="shop_info"><li>评分：<img src="' + shop.rating_s_img_url + '" /></li><li>电话：'  + shop.telephone + '</li><li>地址：'  + shop.address + '</li><li>分类：'  + shop.categories + '</li><li>区域：'  + shop.regions + '</li></ul><img class="sm_pic fr" src="' + shop.pic_url + '" />');
+		
+		var shopInfo = new BMap.InfoWindow(content);  // 创建信息窗口对象
+		shopInfo.setTitle('<a data-bid="' + shop.business_id + '" href="' + shop.business_url + '" target="_blank">' + shop.name + '</a><a onclick="javascript:MyMap.addToProject(this);" class="op_add_to_project label label-success">加入计划</a><a class="ml5 op_in_pro hide label label-warning">已加入</a>');
+		shopInfo.setHeight(125);
+		//shopInfo.setWidth(400);
+		marker.addEventListener("click", function(){
+		   global.map.openInfoWindow(shopInfo, point);
+		   //弹出信息窗口时，根据“已加入行程数组”判断显示哪一个操作按钮
+		   if($.inArray(shop.business_id.toString(), MyMap.in_project) != -1) {
+			   $('a[data-bid=' + shop.business_id + ']').siblings('.op_add_to_project').hide().siblings('.op_in_pro').show();
+		   }
+		});
+		
+		//处理重叠
+		marker.addEventListener("mouseover", function(){
+		   $(this).css('z-index', '999999');
+		});
+		
+		marker.addEventListener("mouseout", function(){
+		   $(this).css('z-index', '0');
+		});
+		
+		//生成列表和图标
+		var item = $('<li></li>');
+		$('.shop_list').append( item );
+	}
+};
+
+
+var Dianping = {
+	//拉取商家信息,并绘制到地图
+	pull_shop : function(lat, lng, category) {
+		//创建参数表
+		var param = {};
+		param['latitude'] = lat;
+		param['longitude'] = lng;
+		param["offset_type"]="1";
+		param["out_offset_type"]="1";
+		param["radius"]="5000";
+		param["category"] = category;
+		
+		//生成网址
+		var sign_url = Dianping.sign_url(param);
+		var url = "http://api.dianping.com/v1/business/find_businesses_by_coordinate?" + sign_url;
+		
+		$.ajax({
+		   type: "POST",
+		   url: '/index/dianping',
+		   data: 'url=' + encodeURIComponent(url),
+		   dataType: 'json',
+		   success: function(msg){
+			   if(msg.status == 'OK' && msg.count > 0) {
+				   $('.jh_shop_num').text( msg.count );
+				   var list = msg.businesses;
+				   for(var i in list) {
+					   var shop = {};
+					   shop.lng = list[i].longitude;
+					   shop.lat = list[i].latitude;
+					   shop.name = list[i].name;
+					   shop.pic_url = list[i].s_photo_url;
+					   
+					   shop.address = list[i].address;
+					   shop.telephone = list[i].telephone;
+					   shop.regions = list[i].regions;
+					   shop.categories = list[i].categories;
+					   shop.rating_s_img_url = list[i].rating_s_img_url;
+					   shop.business_url = list[i].business_url;
+					   shop.business_id = list[i].business_id;
+					   
+					   MyMap.paint( shop );
+				   }
+				   
+			   } else {
+				   alert('未返回' + category + '数据。');
+			   }
+		   }
+		});
+	},
+	
+	//生成签名
+	sign_url : function (param) {
+		// 定义申请获得的appKey和appSecret
+	    var appkey = "2391246455";
+	    var secret = "a0e5e7c3bee4430b973debc85e003906";
+	 
+	    // 对参数名进行字典排序
+	    var array = new Array();
+	    for(var key in param)
+	    {
+	   		array.push(key);
+	    }
+	    array.sort();
+	     
+	    //维护作为网址参数的数组
+	    var urlParamAr = new Array();
+	    // 拼接有序的参数名-值串
+	    var paramArray = new Array();
+	    paramArray.push(appkey);
+	    for(var index in array)
+	    {
+		    var key = array[index];
+		    paramArray.push(key + param[key]);
+		    urlParamAr.push(key + '=' + param[key]);
+	    }
+	    paramArray.push(secret);
+	     
+	    // SHA-1编码，并转换成大写，即可获得签名
+	    var shaSource = paramArray.join("");
+	    var sign = new String(CryptoJS.SHA1(shaSource)).toUpperCase();
+	    var urlParam = urlParamAr.join("&") + '&appkey=' + appkey + '&sign=' + sign;
+	    
+	    return encodeURI( urlParam );
+	}
+};
+
+//自定义覆盖物
+function ShopOverlay(center, pic_url, title){    
+	this._center = center;
+	this._pic_url = pic_url;
+	this._title = title;
+	this._length = 125;
+}    
+// 继承API的BMap.Overlay    
+ShopOverlay.prototype = new BMap.Overlay();
+//实现初始化方法  
+ShopOverlay.prototype.initialize = function(map){    
+	// 保存map对象实例   
+	 this._map = map;        
+	 // 创建div元素，作为自定义覆盖物的容器   
+	 var div = document.createElement("div");
+	 $(div).css({'position':'absolute', 
+		 		'width': this._length + 'px', 
+		 		'height': 'auto', 
+		 		'background':'#f3802b', 
+		 		'border': '1px solid #666', 
+		 		'cursor':'pointer', 
+		 		'padding':'2px',
+		 		'border-radius':'4px'	
+	 		});
+	 $(div).html('<div class="sm_box">' + this._title + '</div><img class="sm_pic" src="' + this._pic_url + '" />');
+	 
+	// 将div添加到覆盖物容器中   
+	 map.getPanes().markerPane.appendChild(div);      
+	// 保存div实例   
+	 this._div = div;      
+	// 需要将div元素作为方法的返回值，当调用该覆盖物的show、   
+	// hide方法，或者对覆盖物进行移除时，API都将操作此元素。   
+	 return div;    
+} 
+
+//实现绘制方法   
+ShopOverlay.prototype.draw = function(){    
+	// 根据地理坐标转换为像素坐标，并设置给容器    
+	var position = this._map.pointToOverlayPixel(this._center);    
+	this._div.style.left = position.x - this._length / 2 + "px"; 
+	//上移shopOverlay，使infoWindow能够完全覆盖marker
+	//todo:精准地理位置箭头
+	this._div.style.top = position.y - this._length - 20 + "px";
+}
+
+ShopOverlay.prototype.addEventListener = function(event,fun){
+    this._div['on'+event] = fun;
+}
 
 </script>
+
+{/literal}
+
