@@ -58,6 +58,14 @@ class db {
 		return $res;
 	}
 	
+	//last insert id
+	function LastInsertId() {
+		$res = self::$pdo->lastInsertId();
+		$this->IsError ();
+		
+		return $res;
+	}
+	
 	//todo:finish when necessary
 	function ExecuteNoneQueryWithPrepare($sql) {
 	}

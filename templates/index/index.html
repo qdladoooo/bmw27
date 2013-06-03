@@ -19,6 +19,8 @@
 	                      <li><a class="jh_change_city" href="#">上海</a></li>
 	                      <li><a class="jh_change_city" href="#">北京</a></li>
 	                      <li><a class="jh_change_city" href="#">厦门</a></li>
+	                      <li><a class="jh_change_city" href="#">武汉</a></li>
+	                      <li><a class="jh_change_city" href="#">大连</a></li>
 	                    </ul>
 	                  </li>
 	                </ul>
@@ -40,7 +42,7 @@
 					<span>热门<i class="icon-resize-vertical"></i></span>
 					<span>人均<i class="icon-resize-vertical"></i></span>
 					<span class="fr mr15">
-						<input type="text" class="input-medium search-query">
+						<input id="keyword" type="text" class="input-medium search-query">
 						<button type="submit" class="btn">搜索</button>
 					</span>
 				</div>
@@ -84,11 +86,60 @@
 	</div>
 	<div class="right_frame">
 		<div class="header">
-			<span>广州游</span><input type="text" class="hide" /><a href="###"><i class="icon-pencil"></i></a>
-			<span>2013-06-01</span><a href="###"><i class="icon-calendar"></i> </a>
+			<span class="mr5 jh_tname_show">{if $travelInfo==''}广州游{else}{$travelInfo['name']}{/if}</span><i class="c_click icon-pencil jh_tname_edit"></i>
+			<input class="jh_tname_input tname_input" value="{if $travelInfo==''}广州游{else}{$travelInfo['name']}{/if}" placeholder="线路名称" /><a class="hide label label-success jh_tname_edit_done">确定</a>
+			<input id="date_input" placeholder="出游日期" class="ml5 date_input" value="" /><i class="c_click icon-calendar js_date_input_show"></i>
 		</div>
 		<script type="text/javascript">
+			//修改线路名称
+			$('.jh_tname_edit').on('click', function() {
+				$('.jh_tname_show, .jh_tname_edit').hide();
+				$('.jh_tname_input, .jh_tname_edit_done').show();
+			});
 			
+			$('.jh_tname_edit_done').on('click', function() {
+				var tname = $.trim( $('.jh_tname_input').val() );
+				if(tname == '') {
+					alert('不能为空');
+				} else if(tname.length > 12) {
+					alert('限12个字');
+				} else {
+					$('.jh_tname_show').text( tname );
+					$('.jh_tname_show, .jh_tname_edit').show();
+					$('.jh_tname_input, .jh_tname_edit_done').hide();
+				}
+			});
+			
+			//日期选择器
+			jQuery(function($){
+		        $.datepicker.regional['zh-CN'] = {
+		                closeText: '关闭',
+		                prevText: '<上月',
+		                nextText: '下月>',
+		                currentText: '今天',
+		                monthNames: ['一月','二月','三月','四月','五月','六月',
+		                '七月','八月','九月','十月','十一月','十二月'],
+		                monthNamesShort: ['一','二','三','四','五','六',
+		                '七','八','九','十','十一','十二'],
+		                dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+		                dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+		                dayNamesMin: ['日','一','二','三','四','五','六'],
+		                weekHeader: '周',
+		                dateFormat: 'yy-mm-dd',
+		                firstDay: 1,
+		                isRTL: false,
+		                showMonthAfterYear: true,
+		                yearSuffix: '年'};
+		        $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+			});
+			$( "#date_input" ).datepicker( { defaultDate: +1 } );
+			$( "#date_input" ).datepicker( "option", "dateFormat", 'yy-mm-dd' );
+			$( "#date_input" ).datepicker( "setDate", "{if $travelInfo==''}+1{else}{$travelInfo['start_time']}{/if}" );
+			
+			//icon弹出日历
+			$('.js_date_input_show').on('click', function() {
+				$( "#date_input" ).datepicker( "show" );
+			});
 		</script>
 		
 		<div class="date_picker">
@@ -114,7 +165,7 @@
 						<option>汽车</option>
 					</select>
 					于
-					<select class="tr_time">
+					<select class="tr_time jh_hour">
 						<option value="0">0</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -139,8 +190,8 @@
 						<option value="21">21</option>
 						<option value="22">22</option>
 						<option value="23">23</option>
-					</select>:<select class="tr_time">
-						<option value="0">0</option>                                                                          <option value="1">1</option>                                                                          <option value="2">2</option>                                                                          <option value="3">3</option>                                                                          <option value="4">4</option>                                                                          <option value="5">5</option>                                                                          <option value="6">6</option>                                                                          <option value="7">7</option>                                                                          <option value="8">8</option>                                                                          <option value="9">9</option>                                                                          <option value="10">10</option>                                                                          <option value="11">11</option>                                                                          <option value="12">12</option>                                                                          <option value="13">13</option>                                                                          <option value="14">14</option>                                                                          <option value="15">15</option>                                                                          <option value="16">16</option>                                                                          <option value="17">17</option>                                                                          <option value="18">18</option>                                                                          <option value="19">19</option>                                                                          <option value="20">20</option>                                                                          <option value="21">21</option>                                                                          <option value="22">22</option>                                                                          <option value="23">23</option>                                                                          <option value="24">24</option>                                                                          <option value="25">25</option>                                                                          <option value="26">26</option>                                                                          <option value="27">27</option>                                                                          <option value="28">28</option>                                                                          <option value="29" selected="&quot;selected&quot;">29</option>                                                                          <option value="30">30</option>                                                                          <option value="31">31</option>                                                                          <option value="32">32</option>                                                                          <option value="33">33</option>                                                                          <option value="34">34</option>                                                                          <option value="35">35</option>                                                                          <option value="36">36</option>                                                                          <option value="37">37</option>                                                                          <option value="38">38</option>                                                                          <option value="39">39</option>                                                                          <option value="40">40</option>                                                                          <option value="41">41</option>                                                                          <option value="42">42</option>                                                                          <option value="43">43</option>                                                                          <option value="44">44</option>                                                                          <option value="45">45</option>                                                                          <option value="46">46</option>                                                                          <option value="47">47</option>                                                                          <option value="48">48</option>                                                                          <option value="49">49</option>                                                                          <option value="50">50</option>                                                                          <option value="51">51</option>                                                                          <option value="52">52</option>                                                                          <option value="53">53</option>                                                                          <option value="54">54</option>                                                                          <option value="55">55</option>                                                                          <option value="56">56</option>                                                                          <option value="57">57</option>                                                                          <option value="58">58</option>                                                                          <option value="59">59</option>                                                                     
+					</select>:<select class="tr_time jh_min">
+						<option value="0">0</option>                                                                          <option value="1">1</option>                                                                          <option value="2">2</option>                                                                          <option value="3">3</option>                                                                          <option value="4">4</option>                                                                          <option value="5">5</option>                                                                          <option value="6">6</option>                                                                          <option value="7">7</option>                                                                          <option value="8">8</option>                                                                          <option value="9">9</option>                                                                          <option value="10">10</option>                                                                          <option value="11">11</option>                                                                          <option value="12">12</option>                                                                          <option value="13">13</option>                                                                          <option value="14">14</option>                                                                          <option value="15">15</option>                                                                          <option value="16">16</option>                                                                          <option value="17">17</option>                                                                          <option value="18">18</option>                                                                          <option value="19">19</option>                                                                          <option value="20">20</option>                                                                          <option value="21">21</option>                                                                          <option value="22">22</option>                                                                          <option value="23">23</option>                                                                          <option value="24">24</option>                                                                          <option value="25">25</option>                                                                          <option value="26">26</option>                                                                          <option value="27">27</option>                                                                          <option value="28">28</option>                                                                          <option value="29" selected="selected">29</option>                                                                          <option value="30">30</option>                                                                          <option value="31">31</option>                                                                          <option value="32">32</option>                                                                          <option value="33">33</option>                                                                          <option value="34">34</option>                                                                          <option value="35">35</option>                                                                          <option value="36">36</option>                                                                          <option value="37">37</option>                                                                          <option value="38">38</option>                                                                          <option value="39">39</option>                                                                          <option value="40">40</option>                                                                          <option value="41">41</option>                                                                          <option value="42">42</option>                                                                          <option value="43">43</option>                                                                          <option value="44">44</option>                                                                          <option value="45">45</option>                                                                          <option value="46">46</option>                                                                          <option value="47">47</option>                                                                          <option value="48">48</option>                                                                          <option value="49">49</option>                                                                          <option value="50">50</option>                                                                          <option value="51">51</option>                                                                          <option value="52">52</option>                                                                          <option value="53">53</option>                                                                          <option value="54">54</option>                                                                          <option value="55">55</option>                                                                          <option value="56">56</option>                                                                          <option value="57">57</option>                                                                          <option value="58">58</option>                                                                          <option value="59">59</option>                                                                     
 					</select>
 					抵达
 					<input type="text" class="input-small tr_destination" placeholder="目的地">
@@ -161,7 +212,7 @@
 						<option>汽车</option>
 					</select>
 					于
-					<select class="tr_time">
+					<select class="tr_time jh_hour">
 						<option value="0">0</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -186,7 +237,7 @@
 						<option value="21">21</option>
 						<option value="22">22</option>
 						<option value="23">23</option>
-					</select>:<select class="tr_time">
+					</select>:<select class="tr_time jh_min">
 						<option value="0">0</option>                                                                          <option value="1">1</option>                                                                          <option value="2">2</option>                                                                          <option value="3">3</option>                                                                          <option value="4">4</option>                                                                          <option value="5">5</option>                                                                          <option value="6">6</option>                                                                          <option value="7">7</option>                                                                          <option value="8">8</option>                                                                          <option value="9">9</option>                                                                          <option value="10">10</option>                                                                          <option value="11">11</option>                                                                          <option value="12">12</option>                                                                          <option value="13">13</option>                                                                          <option value="14">14</option>                                                                          <option value="15">15</option>                                                                          <option value="16">16</option>                                                                          <option value="17">17</option>                                                                          <option value="18">18</option>                                                                          <option value="19">19</option>                                                                          <option value="20">20</option>                                                                          <option value="21">21</option>                                                                          <option value="22">22</option>                                                                          <option value="23">23</option>                                                                          <option value="24">24</option>                                                                          <option value="25">25</option>                                                                          <option value="26">26</option>                                                                          <option value="27">27</option>                                                                          <option value="28">28</option>                                                                          <option value="29" selected="&quot;selected&quot;">29</option>                                                                          <option value="30">30</option>                                                                          <option value="31">31</option>                                                                          <option value="32">32</option>                                                                          <option value="33">33</option>                                                                          <option value="34">34</option>                                                                          <option value="35">35</option>                                                                          <option value="36">36</option>                                                                          <option value="37">37</option>                                                                          <option value="38">38</option>                                                                          <option value="39">39</option>                                                                          <option value="40">40</option>                                                                          <option value="41">41</option>                                                                          <option value="42">42</option>                                                                          <option value="43">43</option>                                                                          <option value="44">44</option>                                                                          <option value="45">45</option>                                                                          <option value="46">46</option>                                                                          <option value="47">47</option>                                                                          <option value="48">48</option>                                                                          <option value="49">49</option>                                                                          <option value="50">50</option>                                                                          <option value="51">51</option>                                                                          <option value="52">52</option>                                                                          <option value="53">53</option>                                                                          <option value="54">54</option>                                                                          <option value="55">55</option>                                                                          <option value="56">56</option>                                                                          <option value="57">57</option>                                                                          <option value="58">58</option>                                                                          <option value="59">59</option>                                                                     
 					</select>
 					抵达
@@ -202,15 +253,109 @@
 			</div>
 		</div>
 		
-		<div class="op"><span class="label label-info">保存</span></div>
+		<div class="op"><span class="label label-info jh_travel_save c_click">保存</span></div>
+		<script type="text/javascript">
+			$('.jh_travel_save').on('click', function() {
+				var tid = $.trim( $('#travel_id').val() );
+				if(tid == '') {
+					tid = 0;
+				}
+				
+				var tname = $('.jh_tname_show').text();
+				var start_date = $('#date_input').val();
+				
+				var days_info = [];
+				var days = $('.jh_content');
+				days.each(function() {
+					var nth = $(this).attr('data-nth');
+					if(nth != 0) {
+						var day_info = {};
+						day_info['nth'] = nth;
+						day_info['vehicle'] = $(this).find('.tr_vehicle').val();
+						day_info['arrive_time'] = $(this).find('.jh_hour').val() + ':' + $(this).find('.jh_min').val();
+						day_info['destination'] = $(this).find('.tr_destination').val();
+						day_info['hotel_id'] = $(this).find('.jh_hotel').attr('data-hotel-id');
+						day_info['spot_list'] = [];
+						$(this).find('ul.list_content li').each(function() {
+							day_info['spot_list'].push( $(this).attr('data-bid') );
+						});
+						
+						days_info.push( day_info );
+					}
+				});
+				
+				//提交数据
+				$.ajax({
+				   type: "POST",
+				   url: '/index/index',
+				   data: 'tid=' + tid + '&tname=' + tname + '&start_date=' + start_date + '&days_info=' + JSON.stringify(days_info),
+				   dataType: 'text',
+				   success: function(msg){
+					   if(msg == '') {
+						   alert('保存成功');
+					   }
+				   }
+				});
+				
+			});
+		</script>
 	</div>
 </div>
+<input id="travel_id" type="hidden" value="{$smarty.get.tid}" />
+
+<script type="text/javascript">
+//初始化线路数据
+//todo: 正式产品重写数据初始化、设置、保存逻辑
+$().ready(function() {
+	//初始化日程数据
+	var day_plan = JSON.parse( '{$dayPlan}' );
+	
+	//生成日程容器
+	var i;
+	var count = $(day_plan).length - 1;
+	for(i=0; i<count; i++) {
+		MyMap.addOneDay();
+	}
+	
+	//将日程安排赋值到页面中
+	$(day_plan).each(function() {
+		var traffic = this.traffic;
+		var arrive_time = this.arrive_time;
+		var destination = this.destination;
+		var dayth = this.dayth;
+		var hotel_id = this.hotel_id;
+		var spot_list = this.spot_list;
+		var dayth = this.dayth;
+		var container = $('.jh_content[data-nth=' + dayth + ']');
+		
+		//交通方式
+		container.find('.tr_vehicle').val( traffic );
+		//到达时间
+		var h = arrive_time.split(':')[0];
+		var m = arrive_time.split(':')[1];
+		container.find('.jh_hour').val(h);
+		container.find('.jh_min').val(m);
+		//抵达地点
+		container.find('.tr_destination').val(destination);
+		//加入酒店
+		MyMap.addShopToProject(hotel_id, 'hotel', dayth);
+		//加入景点
+		var i;
+		var count = spot_list.length;
+		for(i=0; i<count; i++) {
+			MyMap.addShopToProject(spot_list[i], 'spot', dayth);
+		}
+	});
+
+});
+
+</script>
+
 
 {literal}
 <script type="text/javascript">
 //全局变量注册
 var global = {};
-
 $().ready(function() {
 	//动态调整地图与形成列表高度，使总是充满屏幕
 	window.onresize = function() {
@@ -238,17 +383,7 @@ $().ready(function() {
 	
 	//日程加一天
 	$('.jh_add_day').on('click', function() {
-		//导航加一天
-		var n = $('.jh_day_list .divider').prev().find('a').attr('data-nth');
-		n++;
-		var item = $('<li><a class="jh_day_item" data-nth="' + n + '" href="#">第' + n + '天</a></li>');
-		$('.jh_day_list .divider').before(item);
-		
-		//内容加一天
-		$('.jh_content_box .jh_content[data-nth=0]').clone().attr('data-nth', n).addClass('hide').appendTo( $('.jh_content_box') );
-		
-		//切换到新添加的日程
-		item.find('a').click();
+		MyMap.addOneDay();
 	});
 	
 	//切换日程
@@ -283,6 +418,7 @@ var MyMap = {
 		map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
 		map.setCurrentCity( city );          // 设置地图显示的城市 此项是必须设置的
 		
+		//todo:此处逻辑未深入设计，不开放
 		//地图移动后重新获取周围商家
 		map.addEventListener("dragend", function showInfo(){
 			var cp = map.getCenter();
@@ -310,7 +446,7 @@ var MyMap = {
 		
 		if(MyMap.currentCategory() == '酒店') {
 			//住宿
-			$('.jh_content_box .jh_content:visible').children('.jh_hotel_name').html('<span>下榻于</span><a target="_blank" href="' + href + '">' + name + '</a>');
+			$('.jh_content_box .jh_content:visible').children('.jh_hotel_name').html('<span>下榻于</span><a class="jh_hotel" data-hotel-id="' + bid + '" target="_blank" href="' + href + '">' + name + '</a>');
 			//操作按钮显示为“已加入行程”
 			$(self).addClass('hide').siblings('.op_in_pro').removeClass('hide');
 		} else if(MyMap.currentCategory() == '景点' || MyMap.currentCategory() == '美食') {
@@ -331,6 +467,57 @@ var MyMap = {
 		}
 	},
 	
+	//制定商家id，将商家加入行程
+	addShopToProject : function( bid, type, dayth ) {
+		if(type == 'hotel') {
+			var param = {};
+			param['business_id'] = bid;
+			//生成网址
+			var sign_url = Dianping.sign_url(param);
+			var url = "http://api.dianping.com/v1/business/get_single_business?" + sign_url;
+			
+			$.ajax({
+			   type: "POST",
+			   url: '/index/dianping',
+			   data: 'url=' + encodeURIComponent(url),
+			   dataType: 'json',
+			   success: function(msg){
+				   if(msg.status == 'OK' && msg.count > 0) {
+					   var shop = msg.businesses[0];
+					   $('.jh_content[data-nth=' + dayth + ']').children('.jh_hotel_name').html('<span>下榻于</span><a class="jh_hotel" data-hotel-id="' + bid + '" target="_blank" href="' + shop.business_url + '">' + shop.name + '</a>');
+				   } else {
+					   alert('未返回商家信息，可能触发api调用次数限制');
+				   }
+			   }
+			});
+		} else {
+			var param = {};
+			param['business_id'] = bid;
+			//生成网址
+			var sign_url = Dianping.sign_url(param);
+			var url = "http://api.dianping.com/v1/business/get_single_business?" + sign_url;
+			
+			$.ajax({
+			   type: "POST",
+			   url: '/index/dianping',
+			   data: 'url=' + encodeURIComponent(url),
+			   dataType: 'json',
+			   success: function(msg){
+				   if(msg.status == 'OK' && msg.count > 0) {
+					    var shop = msg.businesses[0];
+					 	//将景点加入当日行程列表
+						var item = $('<li data-bid="'+ bid +'" class="item"><img class="fl" src="' + shop.photo_url + '" /><dl><dd><a target="_blank" href="' + shop.business_url + '">' + shop.name + '</a></dd><dd>时长：0.5小时</dd><dd><a data-rm-bid="' + bid + '" onclick="MyMap.removeFromProject(this);" class="label label-important">删除</a></dd></dl></li>');
+						$('.jh_content[data-nth=' + dayth + ']').find('.list_content').append(item);
+						//将景点id放入“已加入行程的旅游元素列表”
+						MyMap.in_project.push(bid);
+			   		} else {
+			   			alert('未返回商家信息，可能触发api调用次数限制');
+			   		}
+			   }
+			});
+		}
+	},
+	
 	//从行程中删除旅游元素
 	removeFromProject : function(self) {
 		var bid = $(self).attr('data-rm-bid');
@@ -340,6 +527,20 @@ var MyMap = {
 		
 		//维护“已加入行程旅游元素id”
 		MyMap.in_project.splice($.inArray(bid, MyMap.in_project),1); 
+	},
+	
+	//日程加一天
+	addOneDay : function() {
+		//导航加一天
+		var n = $('.jh_day_list .divider').prev().find('a').attr('data-nth');
+		n++;
+		var item = $('<li><a class="jh_day_item" data-nth="' + n + '" href="#">第' + n + '天</a></li>');
+		$('.jh_day_list .divider').before(item);
+		
+		//内容加一天
+		$('.jh_content_box .jh_content[data-nth=0]').clone().attr('data-nth', n).addClass('hide').appendTo( $('.jh_content_box') );
+		//切换到新添加的日程
+		item.find('a').click();
 	},
 	
 	//绘制店家信息
@@ -502,10 +703,10 @@ ShopOverlay.prototype.initialize = function(map){
 	// 需要将div元素作为方法的返回值，当调用该覆盖物的show、   
 	// hide方法，或者对覆盖物进行移除时，API都将操作此元素。   
 	 return div;    
-} 
+}
 
 //实现绘制方法   
-ShopOverlay.prototype.draw = function(){    
+ShopOverlay.prototype.draw = function(){
 	// 根据地理坐标转换为像素坐标，并设置给容器    
 	var position = this._map.pointToOverlayPixel(this._center);    
 	this._div.style.left = position.x - this._length / 2 + "px"; 

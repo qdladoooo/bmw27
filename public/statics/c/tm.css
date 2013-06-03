@@ -88,8 +88,23 @@ header {
 	height: 42px;
 	text-align: center;
 	line-height: 42px;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(246,248,249)), to(rgb(230,234,237)));
 }
 
+.right_frame .header .tname_input {
+	height: 15px;
+	width: 70px;
+	margin-right: 5px;
+	display: none;
+}
+
+.right_frame .date_input {
+	height: 15px;
+	margin-right: 5px;
+	width: 75px;
+}
+
+/*  */
 .right_frame .date_picker{
 	height: 47px;
 	text-align: center;
@@ -104,7 +119,6 @@ header {
 	font-size: 18px;
 	color: #666;
 	position: relative;
-	z-index: 99;
 	top: 5px;
 }
 
@@ -160,6 +174,7 @@ header {
 .right_frame .list_box .list_content .item dl{
 	margin: 0 5px;
 	float: left;
+	width: 120px;
 }
 
 .right_frame .hotel{
@@ -229,12 +244,13 @@ header {
 
 /* common  */
 .fl {float:left;}
-
 .fr {float: right;}
 .mr15 {margin-right: 15px;}
 .mb5 {margin-bottom: 5px;}
 .mt5 {margin-top: 5px;}
 .ml5 {margin-left: 5px;}
+.mr5 {margin-right: 5px;}
 .hide {display: none;}
+.c_click {cursor: pointer;}
 
 
