@@ -14,10 +14,16 @@
 				<link href="{$cssFile}" media="screen" rel="stylesheet" type="text/css">
 			{/foreach}
 		{/if}
+		
 		<!-- Scripts -->
 		<script type="text/javascript" src="{$smarty.const.__JS_PATH}jquery.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.__JS_PATH}bootstrap.min.js"></script>
 		<!--[if lt IE 9]><script type="text/javascript" src="/js/html5.js"></script><![endif]-->
+		{if $frontJsQueue}
+			{foreach item=jsFile from=$frontJsQueue}
+				<script type="text/javascript" src="{$jsFile}"></script>
+			{/foreach}
+		{/if}
 	</head>
 <body>
 <div class="container">
@@ -31,13 +37,6 @@
 		<span class="offset2 span8 center copy">Powered by Dlad &copy; 2011 Anti-otaku.net</span>
 	</div>
 </div>
-
-{if $frontJsQueue}
-	{foreach item=jsFile from=$frontJsQueue}
-		<script type="text/javascript" src="{$jsFile}"></script>
-	{/foreach}
-{/if}
-
 <!-- 百年一瞬，不失本心 -->
 </body>
 </html>
