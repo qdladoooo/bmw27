@@ -1,0 +1,13 @@
+<style type="text/css">
+	
+</style>
+
+<ul>
+{foreach from=$travelList item=travel }
+<li>
+	<a target="_blank" href="/?tid={$travel.id}">{$travel.name}</a>
+</li>
+{/foreach}
+</ul>
+
+
