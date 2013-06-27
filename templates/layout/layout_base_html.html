@@ -18,18 +18,17 @@
 		<script type="text/javascript" src="{$smarty.const.__JS_PATH}jquery.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.__JS_PATH}bootstrap.min.js"></script>
 		<!--[if lt IE 9]><script type="text/javascript" src="/js/html5.js"></script><![endif]-->
+		
+		{if $frontJsQueue}
+			{foreach item=jsFile from=$frontJsQueue}
+				<script type="text/javascript" src="{$jsFile}"></script>
+			{/foreach}
+		{/if}
 	</head>
 <body>
 <div class="container">
 	{$frontContent}
 </div>
-
-{if $frontJsQueue}
-	{foreach item=jsFile from=$frontJsQueue}
-		<script type="text/javascript" src="{$jsFile}"></script>
-	{/foreach}
-{/if}
-
 <!-- 百年一瞬，不失本心 -->
 </body>
 </html>

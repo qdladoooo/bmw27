@@ -28,3 +28,4 @@ function M($class_name) {
 	return false;
 }
 
+
