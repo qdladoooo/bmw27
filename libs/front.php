@@ -5,7 +5,7 @@ class Front {
 	static private $layout_path_base = 'layout/';
 	static $default_layout = 'layout.html';
 	
-	static private $title_postfix = 'BMW';
+	static private $title_postfix = '销售系统';
 	static $default_title = '';
 	
 	static private $css_queue = array();
