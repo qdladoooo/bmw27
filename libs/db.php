@@ -11,6 +11,7 @@ class db {
 			self::$pdo = new PDO ( __DATABASE_CONNECT_STRING, __DATABASE_CONNECT_NAME, __DATABASE_CONNECT_PW );
 			self::$pdo->exec ( 'SET NAMES UTF8' );
 			// var_dump("once");
+			self::$pdo->exec('use ' . __DATABASE_NAME);
 		}
 		return self::$pdo;
 	}

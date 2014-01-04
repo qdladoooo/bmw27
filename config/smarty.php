@@ -7,8 +7,8 @@ $smarty->template_dir = 'templates';
 $smarty->config_dir = 'data/smarty/config';
 $smarty->cache_dir = 'data/smarty/cached';
 $smarty->compile_dir = 'data/smarty/compile';
-$smarty->left_delimiter = "{"; //左标签
-$smarty->right_delimiter = "}"; //右标签
+$smarty->left_delimiter = "{#"; //左标签
+$smarty->right_delimiter = "#}"; //右标签
 
 function assign($role, $acting) {
 	global $smarty;

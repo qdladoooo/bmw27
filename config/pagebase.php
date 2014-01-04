@@ -6,6 +6,8 @@ require_once 'config/smarty.php';
 if(__IS_DEVELOPING) {
 	ini_set("display_errors","On");
 	error_reporting(E_ALL);
+} else {
+	ini_set("display_errors","Off");
 }
 
 //autoload

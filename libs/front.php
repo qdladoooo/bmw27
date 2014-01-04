@@ -6,7 +6,7 @@ class Front {
 	static $default_layout = 'layout.html';
 	
 	static private $title_postfix = 'BMW';
-	static $default_title = '';
+	static $default_title = 'page';
 	
 	static private $css_queue = array();
 	static private $js_queue = array();
