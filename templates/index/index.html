@@ -10,13 +10,13 @@
 		<div class="tm_nav_box">
 			<div class="tm_nav">
 				<div class="city_selector fl">
-					<span class="cname jh_cname">广州</span>
+					<span class="cname jh_cname">上海</span>
 					<ul class="nav mb5">
 	                  <li class="dropdown">
 	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">[更换城市]</a>
 	                    <ul class="dropdown-menu">
+                          <li><a class="jh_change_city" href="#">上海</a></li>
 	                      <li><a class="jh_change_city" href="#">广州</a></li>
-	                      <li><a class="jh_change_city" href="#">上海</a></li>
 	                      <li><a class="jh_change_city" href="#">北京</a></li>
 	                      <li><a class="jh_change_city" href="#">厦门</a></li>
 	                      <li><a class="jh_change_city" href="#">武汉</a></li>
@@ -26,7 +26,7 @@
 	                </ul>
 				</div>
 				<ul class="nav nav-tabs">
-				  <li class="active jh_category" data-desc="景点"><a href="###" data-target="#tm_ss" data-toggle="tab">景点</a></li>
+				  <li class="active jh_category" data-desc="亲子"><a href="###" data-target="#tm_ss" data-toggle="tab">亲子</a></li>
 				  <li class="jh_category" data-desc="酒店"><a href="###" data-target="#tm_hotel" data-toggle="tab">住宿</a></li>
 				  <li class="jh_category" data-desc="美食"><a href="###" data-target="#tm_ac" data-toggle="tab">吃喝玩乐</a></li>
 				</ul>
@@ -366,7 +366,7 @@ $().ready(function() {
 	$('#map_container').css('height', document.body.clientHeight-125 + 'px');
 	
 	//初始化地图
-	global.map = MyMap.init('广州', MyMap.currentCategory());
+	global.map = MyMap.init('上海', MyMap.currentCategory());
 	
 	//切换城市，重绘地图
 	$('.jh_change_city').on('click', function() {
@@ -436,7 +436,7 @@ var MyMap = {
 	currentCity : function() {
 		return $('.jh_cname').text();
 	},
-	
+
 	//将旅游要素加入行程计划
 	addToProject : function(self) {
 		var bid = $(self).prev().attr('data-bid');
@@ -598,7 +598,7 @@ var Dianping = {
 		
 		//生成网址
 		var sign_url = Dianping.sign_url(param);
-		var url = "http://api.dianping.com/v1/business/find_businesses_by_coordinate?" + sign_url;
+		var url = "http://api.dianping.com/v1/business/find_businesses?" + sign_url;
 		
 		$.ajax({
 		   type: "POST",
@@ -628,6 +628,7 @@ var Dianping = {
 				   }
 				   
 			   } else {
+                   console.log( msg );
 				   alert('未返回' + category + '数据。');
 			   }
 		   }
