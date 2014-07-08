@@ -613,9 +613,8 @@ var Dianping = {
 					   var shop = {};
 					   shop.lng = list[i].longitude;
 					   shop.lat = list[i].latitude;
-					   shop.name = list[i].name;
+					   shop.name = list[i].name.substring(0, list[i].name.indexOf("(") );
 					   shop.pic_url = list[i].s_photo_url;
-					   
 					   shop.address = list[i].address;
 					   shop.telephone = list[i].telephone;
 					   shop.regions = list[i].regions;
@@ -628,7 +627,6 @@ var Dianping = {
 				   }
 				   
 			   } else {
-                   console.log( msg );
 				   alert('未返回' + category + '数据。');
 			   }
 		   }
