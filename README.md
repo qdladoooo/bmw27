@@ -1,4 +1,5 @@
 ####A personal rapid development framework.
+I built this cause Zend Framework was too heavy and slow, and there was no Laravel!
 
 DEMO:  
 1. poems index  
